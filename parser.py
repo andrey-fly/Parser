@@ -67,6 +67,7 @@ def main():
             send_mail()
             if 'disabled' in str(content):
                 print('There is no size available for purchase')
+                send_mail()
             else:
                 send_mail()
                 driver.quit()
