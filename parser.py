@@ -64,14 +64,12 @@ def main():
             driver.get(url)
             soup = BeautifulSoup(driver.page_source, 'html.parser')
             content = soup.find_all('input', {'class': 'visuallyhidden js-stock-reservation', 'data-size-id': 'S'})
-            send_mail()
-            if 'disabled' in str(content):
-                print('There is no size available for purchase')
-                send_mail()
-            else:
+            if 'disabled' not in str(content):
                 send_mail()
                 driver.quit()
                 break
+            else:
+                print('There is no size available for purchase')
             driver.quit()
 
 
